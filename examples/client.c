@@ -110,14 +110,14 @@ int main(int argc, char *argv[]) {
         UA_EXPANDEDNODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER),
         UA_LOCALIZEDTEXT("en_US", "IsNewlyReferencedBy")
     );
-    if (adResp->responseHeader.serviceResult == UA_STATUSCODE_GOOD) {
+    if (adResp->responseHeader.serviceResult == UA_STATUSCODE_GOOD && adResp->resultsSize > 0) {
         printf("Created 'TheNewReference' with numeric NodeID %u\n", adResp->results[0].addedNodeId.identifier.numeric );
     }
     UA_AddNodesResponse_deleteMembers(adResp);
     UA_free(adResp);
     
     // New ObjectType
-    adResp = UA_Client_createObjectNode
+    adResp = UA_Client_createObjectTypeNode
     (client,    
      UA_QUALIFIEDNAME(0, "TheNewObjectType"),
      UA_LOCALIZEDTEXT("en_US", "TheNewObjectType"),
@@ -127,12 +127,12 @@ int main(int argc, char *argv[]) {
      (UA_UInt32) 0, (UA_UInt32) 0, 
      UA_EXPANDEDNODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER)
     );
-    if (adResp->responseHeader.serviceResult == UA_STATUSCODE_GOOD) {
+    if (adResp->responseHeader.serviceResult == UA_STATUSCODE_GOOD && adResp->resultsSize > 0) {
         printf("Created 'TheNewGreatNode' with numeric NodeID %u\n", adResp->results[0].addedNodeId.identifier.numeric );
     }
     
     // New Object
-    adResp = UA_Client_createObjectTypeNode
+    adResp = UA_Client_createObjectNode
     (client,    
         UA_QUALIFIEDNAME(0, "TheNewGreatNodeBrowseName"),
         UA_LOCALIZEDTEXT("en_US", "TheNewGreatNode"),
@@ -142,7 +142,7 @@ int main(int argc, char *argv[]) {
         (UA_UInt32) 0, (UA_UInt32) 0, 
         UA_EXPANDEDNODEID_NUMERIC(0, UA_NS0ID_OBJECTSFOLDER)
     );
-    if (adResp->responseHeader.serviceResult == UA_STATUSCODE_GOOD) {
+    if (adResp->responseHeader.serviceResult == UA_STATUSCODE_GOOD && adResp->resultsSize > 0) {
         printf("Created 'TheNewGreatNode' with numeric NodeID %u\n", adResp->results[0].addedNodeId.identifier.numeric );
     }
     
@@ -168,7 +168,7 @@ int main(int argc, char *argv[]) {
         UA_NODEID_NUMERIC(0, UA_NS0ID_INT32),
         theValue
     );
-    if (adResp->responseHeader.serviceResult == UA_STATUSCODE_GOOD) {
+    if (adResp->responseHeader.serviceResult == UA_STATUSCODE_GOOD && adResp->resultsSize > 0) {
         printf("Created 'TheVariableNode' with numeric NodeID %u\n", adResp->results[0].addedNodeId.identifier.numeric );
     }
     UA_AddNodesResponse_deleteMembers(adResp);
