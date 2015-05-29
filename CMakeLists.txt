@@ -296,9 +296,3 @@ if(BUILD_DOCUMENTATION)
                       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
                       COMMENT "Generating API documentation with Doxygen")
 endif()
-
-# Enable Nodemanagement
-option(ENABLE_NODEMANAGEMENT "Enable nodemanagement service set." OFF)
-if(ENABLE_NODEMANAGEMENT )
-    add_definitions(-DENABLE_NODEMANAGEMENT)
-endif()

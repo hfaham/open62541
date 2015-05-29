@@ -94,9 +94,7 @@ int main(int argc, char *argv[]) {
     UA_WriteRequest_deleteMembers(&wReq);
     UA_WriteResponse_deleteMembers(&wResp);
 
-#ifdef ENABLE_NODEMANAGEMENT
-    /* Create a new object type node
-     */
+    /* Create a new object type node */
     
     // New ReferenceType
     UA_AddNodesResponse *adResp = UA_Client_createReferenceTypeNode
@@ -175,7 +173,6 @@ int main(int argc, char *argv[]) {
     UA_free(adResp);
     UA_free(theValue);
     /* Done creating a new node*/
-#endif
 
     UA_Client_disconnect(client);
     UA_Client_delete(client);

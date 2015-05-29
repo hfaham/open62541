@@ -341,11 +341,9 @@ static void processMSG(UA_Connection *connection, UA_Server *server, const UA_By
     case UA_NS0ID_TRANSLATEBROWSEPATHSTONODEIDSREQUEST:
         INVOKE_SERVICE(TranslateBrowsePathsToNodeIds);
         break;
-#ifdef ENABLE_NODEMANAGEMENT
     case UA_NS0ID_ADDNODESREQUEST:
         INVOKE_SERVICE(AddNodes);
         break;
-#endif
     default: {
         if(requestType.namespaceIndex == 0 && requestType.identifier.numeric==787){
             UA_LOG_INFO(server->logger, UA_LOGCATEGORY_COMMUNICATION,

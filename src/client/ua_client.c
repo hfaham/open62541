@@ -604,7 +604,6 @@ UA_DeleteReferencesResponse UA_Client_deleteReferences(UA_Client *client, UA_Del
 /**********************************/
 /* User-Facing Macros-Function    */
 /**********************************/
-#ifdef ENABLE_NODEMANAGEMENT
 #define ADDNODES_COPYDEFAULTATTRIBUTES(REQUEST,ATTRIBUTES) do {                           \
     ATTRIBUTES.specifiedAttributes = 0;                                                   \
     if(! UA_LocalizedText_copy(&description, &(ATTRIBUTES.description)))                  \
@@ -771,4 +770,3 @@ UA_AddNodesResponse *UA_Client_createObjectTypeNode(UA_Client *client, UA_Qualif
     
     return adRes;
 }
-#endif
